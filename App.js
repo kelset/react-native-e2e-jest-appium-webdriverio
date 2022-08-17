@@ -50,7 +50,8 @@ const App: () => Node = () => {
           placeholder={username}
           placeholderTextColor="#003f5c"
           style={styles.inputText}
-          onChangeText={usr => setUsername(usr)}
+          onChangeText={setUsername}
+          value={username}
         />
       </View>
 
@@ -62,7 +63,8 @@ const App: () => Node = () => {
           placeholder={password}
           placeholderTextColor="#003f5c"
           style={styles.inputText}
-          onChangeText={pwd => setPassword(pwd)}
+          onChangeText={setPassword}
+          value={password}
         />
       </View>
 
