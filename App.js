@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -35,6 +36,12 @@ const App: () => Node = () => {
   const [username, setUsername] = React.useState('username');
   const [password, setPassword] = React.useState('password');
   const [login, setLogin] = React.useState(false);
+
+  const reset = () => {
+    setUsername('');
+    setPassword('');
+    setLogin(false);
+  };
 
   return (
     <SafeAreaView
@@ -78,6 +85,13 @@ const App: () => Node = () => {
         onPress={() => setLogin(!login)}>
         <Text style={styles.textStyle}>Login</Text>
       </Pressable>
+
+      <Pressable
+        style={[styles.buttonContainer, {backgroundColor: 'coral'}]}
+        accessibilityLabel="reset"
+        onPress={reset}>
+        <Text style={styles.textStyle}>Reset</Text>
+      </Pressable>
     </SafeAreaView>
   );
 };
@@ -117,7 +131,7 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 40,
+    marginTop: 20,
     marginBottom: 10,
   },
 });
