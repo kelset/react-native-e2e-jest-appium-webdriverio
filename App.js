@@ -75,20 +75,20 @@ const App: () => Node = () => {
         />
       </View>
 
-      <Text accessibilityLabel="loginStatus" style={styles.loginStatus}>
+      <Text accessibilityLabel="login-status" style={styles.loginStatus}>
         {login ? 'success' : 'fail'}
       </Text>
 
       <Pressable
         style={styles.buttonContainer}
-        accessibilityLabel="login"
+        accessibilityLabel="login-button"
         onPress={() => setLogin(!login)}>
         <Text style={styles.textStyle}>Login</Text>
       </Pressable>
 
       <Pressable
         style={[styles.buttonContainer, {backgroundColor: 'coral'}]}
-        accessibilityLabel="reset"
+        accessibilityLabel="reset-button"
         onPress={reset}>
         <Text style={styles.textStyle}>Reset</Text>
       </Pressable>
