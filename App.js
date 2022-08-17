@@ -3,109 +3,120 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow strict-local
  */
 
 import React from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
+  Pressable,
+  TextInput,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// export const testProps = (testID: string) => {
+//   if (isIOS) {
+//     return {
+//       testID,
+//       accessible: false,
+//     };
+//   }
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+//   return {
+//     accessible: true,
+//     accessibilityLabel: testID,
+//   };
+// };
 
 const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const [username, setUsername] = React.useState('username');
+  const [password, setPassword] = React.useState('password');
+  const [login, setLogin] = React.useState(false);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView
+      style={styles.backgroundStyle}
+      testID="app-root"
+      accessibilityLabel="app-root">
+      <StatusBar barStyle="dark-content" />
+
+      <View style={styles.inputContainer}>
+        <TextInput
+          name="username"
+          accessibilityLabel="username"
+          placeholder={username}
+          placeholderTextColor="#003f5c"
+          style={styles.inputText}
+          onChangeText={usr => setUsername(usr)}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <TextInput
+          name="password"
+          accessibilityLabel="password"
+          secureTextEntry={true}
+          placeholder={password}
+          placeholderTextColor="#003f5c"
+          style={styles.inputText}
+          onChangeText={pwd => setPassword(pwd)}
+        />
+      </View>
+
+      <Text accessibilityLabel="loginStatus" style={styles.loginStatus}>
+        {login ? 'success' : 'fail'}
+      </Text>
+
+      <Pressable
+        style={styles.buttonContainer}
+        accessibilityLabel="login"
+        onPress={() => setLogin(!login)}>
+        <Text style={styles.textStyle}>Login</Text>
+      </Pressable>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  backgroundStyle: {
+    flex: 1,
+    backgroundColor: '#003f5c',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  textStyle: {
+    fontSize: 20,
+    color: 'white',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  loginStatus: {
+    fontSize: 30,
+    color: 'white',
   },
-  highlight: {
-    fontWeight: '700',
+  inputContainer: {
+    width: '80%',
+    backgroundColor: '#465881',
+    borderRadius: 25,
+    height: 50,
+    marginBottom: 20,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  inputText: {
+    height: 50,
+    color: 'black',
+  },
+  buttonContainer: {
+    width: '80%',
+    backgroundColor: '#3CB371',
+    borderRadius: 25,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 40,
+    marginBottom: 10,
   },
 });
 
