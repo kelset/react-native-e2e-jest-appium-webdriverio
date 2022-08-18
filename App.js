@@ -53,7 +53,7 @@ const App = () => {
       <View style={styles.inputContainer}>
         <TextInput
           name="username"
-          accessibilityLabel="username"
+          {...testProps('username-textinput')}
           placeholder={username}
           placeholderTextColor="#003f5c"
           style={styles.inputText}
@@ -65,7 +65,7 @@ const App = () => {
       <View style={styles.inputContainer}>
         <TextInput
           name="password"
-          accessibilityLabel="password"
+          {...testProps('password-textinput')}
           secureTextEntry={true}
           placeholder={password}
           placeholderTextColor="#003f5c"
@@ -81,14 +81,14 @@ const App = () => {
 
       <Pressable
         style={styles.buttonContainer}
-        accessibilityLabel="login-button"
+        {...testProps('login-button')}
         onPress={() => setLogin(!login)}>
         <Text style={styles.textStyle}>Login</Text>
       </Pressable>
 
       <Pressable
         style={[styles.buttonContainer, {backgroundColor: 'coral'}]}
-        accessibilityLabel="reset-button"
+        {...testProps('reset-button')}
         onPress={reset}>
         <Text style={styles.textStyle}>Reset</Text>
       </Pressable>

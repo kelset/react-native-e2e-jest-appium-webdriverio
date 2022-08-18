@@ -3,7 +3,6 @@ import platformConfig from '../e2e-config';
 
 describe('Appium with Jest automation testing', () => {
   let client;
-  let field;
 
   beforeAll(async function () {
     const config = {
@@ -16,24 +15,35 @@ describe('Appium with Jest automation testing', () => {
 
     client = await wdio.remote(config);
 
-    await client.pause(5000);
-    console.info('[beforeAll] client initialized %j', client);
+
   });
 
-  // alternative to explore later
-  //   test('Test Accessibility Id', async () => {
-  //     expect(await driver.hasElementByAccessibilityId('email')).toBe(true);
-  //     expect(await driver.hasElementByAccessibilityId('password')).toBe(true);
-  //   });
-
   afterAll(async function () {
+    await client.pause(1500);
+    console.info('[afterAll] Done with testing!');
+
     await client.deleteSession();
   });
 
   test('First test', async function () {
-    // field = await client.hasElementByAccessibilityId('login-status');
-    field = await client.$('~login-status');
-    const value = await field.getText();
-    expect(value).toBe('fail');
+    const loginStatusText = await client.$('~login-status');
+    let loginStatusTextValue = await loginStatusText.getText();
+    expect(loginStatusTextValue).toBe('fail');
+
+    const UsernameTextInput = await client.$('~username-textinput');
+    await UsernameTextInput.setValue('Morgan Freeman');
+    const UsernameTextInputValue = await UsernameTextInput.getText();
+    expect(UsernameTextInputValue).toBe('Morgan Freeman');
+
+    const PasswordTextInput = await client.$('~password-textinput');
+    await PasswordTextInput.setValue('god');
+    const PasswordTextInputValue = await PasswordTextInput.getText();
+    expect(PasswordTextInputValue).toBe('•••');
+
+    const loginButton = await client.$('~login-button');
+    await loginButton.click();
+
+    loginStatusTextValue = await loginStatusText.getText();
+    expect(loginStatusTextValue).toBe('success');
   });
 });
