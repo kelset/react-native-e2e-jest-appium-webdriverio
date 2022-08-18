@@ -1,5 +1,5 @@
 module.exports = {
   rootDir: './__tests__',
-  testTimeout: 30000,
+  testTimeout: 60000,
   bail: 0,
 };

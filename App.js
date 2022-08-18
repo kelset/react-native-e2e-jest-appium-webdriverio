@@ -15,21 +15,22 @@ import {
   View,
   Pressable,
   TextInput,
+  Platform,
 } from 'react-native';
 
-// export const testProps = (testID: string) => {
-//   if (isIOS) {
-//     return {
-//       testID,
-//       accessible: false,
-//     };
-//   }
+export const testProps = (testID: string) => {
+  if (Platform.OS === 'ios') {
+    return {
+      testID,
+      accessible: false,
+    };
+  }
 
-//   return {
-//     accessible: true,
-//     accessibilityLabel: testID,
-//   };
-// };
+  return {
+    accessible: true,
+    accessibilityLabel: testID,
+  };
+};
 
 const App = () => {
   const [username, setUsername] = React.useState('username');
@@ -74,7 +75,7 @@ const App = () => {
         />
       </View>
 
-      <Text accessibilityLabel="login-status" style={styles.loginStatus}>
+      <Text {...testProps('login-status', true)} style={styles.loginStatus}>
         {login ? 'success' : 'fail'}
       </Text>
 

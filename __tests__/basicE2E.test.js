@@ -3,7 +3,7 @@ import platformConfig from '../e2e-config';
 
 describe('Appium with Jest automation testing', () => {
   let client;
-  // let field;
+  let field;
 
   beforeAll(async function () {
     const config = {
@@ -15,7 +15,6 @@ describe('Appium with Jest automation testing', () => {
     };
 
     client = await wdio.remote(config);
-    // field = await client.$('android.widget.EditText');
   });
 
   // alternative to explore later
@@ -29,8 +28,9 @@ describe('Appium with Jest automation testing', () => {
   });
 
   test('First test', async function () {
-    // await field.setValue('Hello World!');
-    // const value = await field.getText();
-    // expect(value).toBe('Hello World!');
+    // field = await client.hasElementByAccessibilityId('login-status');
+    field = await client.$('#login-status');
+    const value = await field.getText();
+    expect(value).toBe('fail');
   });
 });
