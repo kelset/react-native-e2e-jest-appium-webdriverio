@@ -15,6 +15,9 @@ describe('Appium with Jest automation testing', () => {
     };
 
     client = await wdio.remote(config);
+
+    await client.pause(5000);
+    console.info('[beforeAll] client initialized %j', client);
   });
 
   // alternative to explore later
@@ -29,7 +32,7 @@ describe('Appium with Jest automation testing', () => {
 
   test('First test', async function () {
     // field = await client.hasElementByAccessibilityId('login-status');
-    field = await client.$('#login-status');
+    field = await client.$('~login-status');
     const value = await field.getText();
     expect(value).toBe('fail');
   });
