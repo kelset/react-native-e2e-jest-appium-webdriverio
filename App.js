@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -32,7 +31,7 @@ import {
 //   };
 // };
 
-const App: () => Node = () => {
+const App = () => {
   const [username, setUsername] = React.useState('username');
   const [password, setPassword] = React.useState('password');
   const [login, setLogin] = React.useState(false);
