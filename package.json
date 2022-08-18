@@ -7,7 +7,12 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:all": "E2E_DEVICE=\"*\" jest --testMatch=\"**/__tests__/**/!(*e2e.js)\"",
+    "start:appium": "appium",
+    "test:e2e": "jest --testMatch=\"**/__tests__/**/*e2e.js\"",
+    "test:e2e:android": "E2E_DEVICE=\"android-emulator\" yarn test:e2e",
+    "test:e2e:ios": "E2E_DEVICE=\"ios-emulator\" yarn test:e2e"
   },
   "dependencies": {
     "react": "18.0.0",
@@ -27,5 +32,23 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "e2e": {
+    "platform": {
+      "ios": {
+        "platformName": "iOS",
+        "platformVersion": "15.5",
+        "deviceName": "iPhone 13",
+        "app": "./ios/build/Build/Products/Release-iphonesimulator/TestForE2E.app",
+        "automationName": "XCUITest"
+      },
+      "android": {
+        "platformName": "Android",
+        "platformVersion": "12",
+        "deviceName": "Android Emulator",
+        "app": "TestForE2E-debug.apk",
+        "automationName": "UiAutomator2"
+      }
+    }
   }
 }
