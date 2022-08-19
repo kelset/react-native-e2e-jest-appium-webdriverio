@@ -8,7 +8,6 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "test:all": "E2E_DEVICE=\"*\" jest --testMatch=\"**/__tests__/**/!(*E2E.test.js)\"",
     "start:appium": "appium",
     "test:e2e": "jest --testMatch=\"**/__tests__/**/*E2E.test.js\"",
     "test:e2e:all": "yarn test:e2e:android && yarn test:e2e:ios",
