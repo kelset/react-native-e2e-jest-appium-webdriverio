@@ -34,7 +34,17 @@ Please make sure that your local emulator/simulator config matches the `e2e` sec
 
 ## Notes on E2E: how does it work?
 
-//TODO: add me
+I'll try to keep it simple and to walk through all the main concepts and hacks that make it all work.
+
+The basic premise is that this is, from Appium's perspective, just a project like any other: the app it needs to test is a black box, and it gets to communicate with it via webdriverIO's client.
+
+Via the command `test:e2e:android` we start the testing, that starts up the `basicE2E.test.js` script - this file gets via an helper script `e2e-config.js` which platform to test (passed as an ENV variable, `E2E_DEVICE` during the yarn command, check `test:e2e:android` in `package.json`) and goes into the `package.json`, section `e2e`, and uses those info the `beforeAll` to stand up the webdriverIO client.
+
+Then the actual testing is done by using as "communication point" to invoke the native components this following pattern `client.$('~<string>')` (the ~ is intentional, and important!). The `<string>` here is what we setup in `App.js`, and it should be just the `accessibilityID` option (that RN passes back to the native component) but actually we need to use a bit of a workaround script called `testProps` (at the top of `App.js`) to tailor this use for iOS/Android and for the `Text` component. (_huge props to Slav Kurochkin for finding this out and explaining it [in this article](http://93days.me/testing-react-native-application/)_)
+
+This way we can interact with all the elements on screen that have their string setup as props via `{...testProps(<string>)}`.
+
+If this isn't clear enough or you'd like a blogpost on this subject, feel free to [open an issue](https://github.com/kelset/react-native-e2e-jest-appium-webdriverio/issues/new) or talk to me [over on Twitter](https://twitter.com/kelset).
 
 ## Inspiration and resources
 
