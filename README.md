@@ -1,14 +1,12 @@
 # E2E testing for React Native with Jest, Appium and WebDriverIO (iOS and Android)
 
-<div align="center">
-  <a href="https://github.com/kelset?tab=followers">
-    <img src="https://img.shields.io/github/followers/kelset?label=Follow%20%40kelset&style=social" />
-  </a>
-
-  <a href="https://twitter.com/kelset">
-    <img src="https://img.shields.io/twitter/follow/kelset?label=Follow%20%40kelset&style=social" />
-  </a>
-</div>
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)](./CONTRIBUTING.md)
+<a href="https://github.com/kelset?tab=followers">
+<img src="https://img.shields.io/github/followers/kelset?label=Follow%20%40kelset&style=social" />
+</a>
+<a href="https://twitter.com/kelset">
+<img src="https://img.shields.io/twitter/follow/kelset?label=Follow%20%40kelset&style=social" />
+</a>
 
 In this repo you will find a sample project to showcase how to do E2E testing with [Jest](https://jestjs.io/) + [Appium](https://appium.io/) + [WebDriverIO](https://webdriver.io/) for Android and iOS on react-native.
 
