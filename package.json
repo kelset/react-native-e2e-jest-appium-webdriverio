@@ -37,8 +37,8 @@
     "platform": {
       "ios": {
         "platformName": "iOS",
-        "platformVersion": "15.5",
-        "deviceName": "iPhone 13",
+        "platformVersion": "16.2",
+        "deviceName": "iPhone 14",
         "bundleId": "org.reactjs.native.example.TestForE2E",
         "automationName": "XCUITest"
       },
