@@ -1,28 +1,6 @@
-const wdio = require('webdriverio');
-const platformConfig = require('../e2e-config');
+import {client} from '../jest.setup';
 
 describe('Appium with Jest automation testing', () => {
-  let client;
-
-  beforeAll(async function () {
-    const config = {
-      path: '/wd/hub',
-      port: 4723,
-      capabilities: {
-        ...platformConfig,
-      },
-    };
-
-    client = await wdio.remote(config);
-  });
-
-  afterAll(async function () {
-    await client.pause(1500);
-    console.info('[afterAll] Done with testing!');
-
-    await client.deleteSession();
-  });
-
   test('First test', async function () {
     const loginStatusText = await client.$('~login-status');
     let loginStatusTextValue = await loginStatusText.getText();
