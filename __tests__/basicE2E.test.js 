@@ -1,8 +1,8 @@
-import wdio from 'webdriverio';
+const wdio = require('webdriverio');
 import platformConfig from '../e2e-config';
 
 describe('Appium with Jest automation testing', () => {
-  let client: any;
+  let client;
 
   beforeAll(async function () {
     const config = {
@@ -14,8 +14,6 @@ describe('Appium with Jest automation testing', () => {
     };
 
     client = await wdio.remote(config);
-
-
   });
 
   afterAll(async function () {
