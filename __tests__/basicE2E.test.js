@@ -1,5 +1,5 @@
 const wdio = require('webdriverio');
-import platformConfig from '../e2e-config';
+const platformConfig = require('../e2e-config');
 
 describe('Appium with Jest automation testing', () => {
   let client;
