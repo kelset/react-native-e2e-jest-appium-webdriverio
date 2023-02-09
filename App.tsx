@@ -52,7 +52,6 @@ const App = () => {
 
       <View style={styles.inputContainer}>
         <TextInput
-          name="username"
           {...testProps('username-textinput')}
           placeholder={username}
           placeholderTextColor="#003f5c"
@@ -64,7 +63,6 @@ const App = () => {
 
       <View style={styles.inputContainer}>
         <TextInput
-          name="password"
           {...testProps('password-textinput')}
           secureTextEntry={true}
           placeholder={password}

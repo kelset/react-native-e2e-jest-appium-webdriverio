@@ -4,17 +4,18 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios": "react-native run-ios --simulator=\"iPhone SE (3rd generation)\"",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
     "start:appium": "appium",
-    "test:e2e": "jest --testMatch=\"**/__tests__/**/*E2E.test.js\"",
+    "test:e2e": "jest --testMatch=\"**/__tests__/**/*E2E.test.tsx\"",
     "test:e2e:all": "yarn test:e2e:android && yarn test:e2e:ios",
     "test:e2e:android": "E2E_DEVICE=\"android\" yarn test:e2e",
     "test:e2e:ios": "E2E_DEVICE=\"ios\" yarn test:e2e"
   },
   "dependencies": {
+    "@types/react-native": "^0.71.1",
     "react": "18.0.0",
     "react-native": "0.69.4"
   },
@@ -22,13 +23,15 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
-    "appium": "^1.22.3",
+    "@types/jest": "^29.4.0",
+    "appium": "^2.0.0-beta.53",
+    "appium-xcuitest-driver": "^4.16.12",
     "babel-jest": "^26.6.3",
     "eslint": "^7.32.0",
     "jest": "^26.6.3",
-    "webdriverio": "^7.21.0",
     "metro-react-native-babel-preset": "^0.70.3",
-    "react-test-renderer": "18.0.0"
+    "react-test-renderer": "18.0.0",
+    "webdriverio": "^7.30.1"
   },
   "jest": {
     "preset": "react-native"
@@ -37,14 +40,15 @@
     "platform": {
       "ios": {
         "platformName": "iOS",
-        "platformVersion": "16.2",
-        "deviceName": "iPhone 14",
-        "bundleId": "org.reactjs.native.example.TestForE2E",
-        "automationName": "XCUITest"
+        "appium:platformName": "iOS",
+        "appium:platformVersion": "16.2",
+        "appium:deviceName": "iPhone SE (3rd generation)",
+        "appium:bundleId": "org.reactjs.native.example.TestForE2E",
+        "appium:automationName": "XCUITest"
       },
       "android": {
         "platformName": "Android",
-        "platformVersion": "12",
+        "platformVersion": "13",
         "deviceName": "Android Emulator",
         "app": "./android/app/build/outputs/apk/debug/app-debug.apk",
         "automationName": "UiAutomator2"
