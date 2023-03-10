@@ -14,9 +14,15 @@ _It's a bit janky but it serves the purpose of showcasing how to a basic setup n
 
 ## How to use
 
-First off, make sure that your setup works with Appium. You can follow their [getting started guide](http://appium.io/docs/en/about-appium/getting-started/) for that.
+First off, install the needed tooling:
 
-You want to make sure, in particular, to have it installed locally via `npm install -g appium`, and that both `npx appium-doctor --android` and `npx appium-doctor --ios` give you a ✅
+```bash
+npm install appium@2.0.0-beta.53 -g
+appium driver install uiautomator2
+appium driver install xcuitest
+```
+
+> More details about drivers in Appium [here](https://appium.github.io/appium/docs/en/2.0/guides/managing-exts/) and [here](https://appium.github.io/appium/docs/en/2.0/quickstart/uiauto2-driver/)
 
 Once you have done that, you can get the repo locally via the classic `git clone git@github.com:kelset/react-native-e2e-jest-appium-webdriverio.git` command (I prefer SSH over HTTP for cloning, but you do you).
 
@@ -24,13 +30,13 @@ Then you can navigate right into the codebase via `cd react-native-e2e-jest-appi
 
 After this, run the app on the Android emulator/ iOS simulator via `yarn android`/`yarn ios` - **you need to do this at least once** (for simplicity sake, we want the app to be already installed on the simulator/emulator before testing).
 
-Once the app is on the emulator/simulator and Metro is running, you can open a new terminal window and start the Appium server via `appium`.
+Once the app is on the emulator/simulator and Metro is running, you can open a new terminal window and start the Appium server via `yarn start:appium`.
 
 With the server is running, you can use the commands `test:e2e:android` and `test:e2e:ios` to try out the E2E loop, or use `test:e2e:all` to run both one after the other.
 
 ### A note on setup
 
-Please make sure that your local emulator/simulator config matches the `e2e` section of the `package.json` or it will fail 'cause it won't be able to connect to the platform.
+Please make sure that your local emulator/simulator config matches the `e2e-config.js` setup or it will fail 'cause it won't be able to connect to the platform.
 
 ## Notes on E2E: how does it work?
 
@@ -71,6 +77,8 @@ I was also inspired by a few repos and how they dealt with similar configs:
 Contributions are more than welcome! _(as already mentioned, code is janky and could use a bit more polish)_
 
 Check [CONTRIBUTING](./CONTRIBUTING.md) for more.
+
+Thanks to [@MadeInFrance](https://github.com/MadeinFrance) for his help.
 
 ## License & CoC
 
