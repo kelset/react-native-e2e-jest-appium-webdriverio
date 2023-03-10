@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest --runInBand",
+    "test": "jest",
     "lint": "eslint .",
     "start:appium": "appium --base-path /wd/hub",
     "test:e2e:all": "yarn test:e2e:android && yarn test:e2e:ios",

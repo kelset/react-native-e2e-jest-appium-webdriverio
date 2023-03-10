@@ -1,6 +1,6 @@
 const wdio = require('webdriverio');
 import capabilities from './e2e-config.js';
-import {beforeEach, afterEach, jest} from '@jest/globals';
+import {beforeAll, afterAll, jest} from '@jest/globals';
 jest.retryTimes(3);
 
 let client: WebdriverIO.Browser;
@@ -15,11 +15,11 @@ const config = {
   },
 };
 
-beforeEach(async () => {
+beforeAll(async () => {
   client = await wdio.remote(config);
 });
 
-afterEach(async () => {
+afterAll(async () => {
   console.info('[afterAll] Done with testing!');
   await client.deleteSession();
 });
