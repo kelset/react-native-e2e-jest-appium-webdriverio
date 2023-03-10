@@ -5,7 +5,7 @@ let capabilities;
 
 const android = {
   platformName: 'Android',
-  'appium:platformVersion': '12.0',
+  'appium:platformVersion': '13.0',
   'appium:deviceName': 'Android Emulator',
   'appium:app': './android/app/build/outputs/apk/debug/app-debug.apk',
   'appium:automationName': 'UiAutomator2',

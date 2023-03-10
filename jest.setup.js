@@ -3,7 +3,7 @@ import capabilities from './e2e-config.js';
 import {beforeEach, afterEach, jest} from '@jest/globals';
 jest.retryTimes(3);
 
-let driver;
+let client: WebdriverIO.Browser;
 const config = {
   path: '/wd/hub',
   host: 'localhost',
@@ -16,12 +16,12 @@ const config = {
 };
 
 beforeEach(async () => {
-  driver = await wdio.remote(config);
+  client = await wdio.remote(config);
 });
 
 afterEach(async () => {
   console.info('[afterAll] Done with testing!');
-  await driver.deleteSession();
+  await client.deleteSession();
 });
 
-export {driver};
+export {client};
