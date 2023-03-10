@@ -32,7 +32,7 @@ export const testProps = (testID: string) => {
   };
 };
 
-const App = () => {
+function App(): JSX.Element {
   const [username, setUsername] = React.useState('username');
   const [password, setPassword] = React.useState('password');
   const [login, setLogin] = React.useState(false);
@@ -52,7 +52,6 @@ const App = () => {
 
       <View style={styles.inputContainer}>
         <TextInput
-          name="username"
           {...testProps('username-textinput')}
           placeholder={username}
           placeholderTextColor="#003f5c"
@@ -64,7 +63,6 @@ const App = () => {
 
       <View style={styles.inputContainer}>
         <TextInput
-          name="password"
           {...testProps('password-textinput')}
           secureTextEntry={true}
           placeholder={password}
@@ -75,7 +73,7 @@ const App = () => {
         />
       </View>
 
-      <Text {...testProps('login-status', true)} style={styles.loginStatus}>
+      <Text {...testProps('login-status')} style={styles.loginStatus}>
         {login ? 'success' : 'fail'}
       </Text>
 
@@ -94,7 +92,7 @@ const App = () => {
       </Pressable>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   backgroundStyle: {

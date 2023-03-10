@@ -1,5 +1,6 @@
 module.exports = {
-  rootDir: './__tests__',
   testTimeout: 60000,
   bail: 0,
+  setupFilesAfterEnv: ['./jest.setup.js'],
+  testMatch: ['**/__tests__/*.tsx'],
 };
